@@ -45,3 +45,8 @@ def delete_address(address_id: int, db: Session = Depends(get_db)):
 def search_addresses(lat: float, lon: float, radius: float, db: Session = Depends(get_db)):
     logger.info("Searching addresses within radius")
     return crud.search_within_radius(db, lat, lon, radius)
+
+
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
